@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -print0 -type f -name "*.*" ! -path "*.git*" $(printf "! -name %s " $(cat .gitignore)) | xargs -0 ls -ltd --full-time | sed -r 's/ +/ /g' | cut -sd" " -f6,9 | sort -u -t" " -k1,1
