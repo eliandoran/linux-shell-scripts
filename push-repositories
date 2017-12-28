@@ -1,0 +1,12 @@
+#!/bin/bash
+COLOR="$(tput setaf 3)"
+RESET="$(tput sgr0)"
+
+for dir in *; do
+    if [ -d "${dir}" ] && [ -d "${dir}/.git" ]; then
+        echo -e "\n${COLOR}Repository: ${dir}${RESET}"
+        cd "${dir}"
+        git push
+        cd ..
+    fi
+done
